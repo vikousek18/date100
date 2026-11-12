@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff3f6">
+  <title>Our Little Date ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--pink:#e98eaa;--deep:#b94e75;--pale:#fff3f6;--ink:#49343c;--muted:#927d85;--line:#f2dce4}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#fff8fa,#ffeef3 55%,#fff9f5);color:var(--ink);font-family:"DM Sans",sans-serif;min-height:100vh}
+    .wrap{width:min(760px,calc(100% - 28px));margin:0 auto;padding:28px 0 56px}
+    header{text-align:center;padding:22px 12px 26px}.eyebrow{letter-spacing:.18em;text-transform:uppercase;color:var(--deep);font-size:11px;font-weight:700}
+    h1,h2{font-family:"Playfair Display",serif}h1{font-size:clamp(38px,8vw,58px);margin:10px 0 8px;color:#bd6684}header p{color:var(--muted);margin:0}
+    .hero{height:190px;border-radius:28px;background:linear-gradient(120deg,rgba(90,40,58,.10),rgba(90,40,58,.02)),url("https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1400&q=85") center 48%/cover;box-shadow:0 14px 36px #b94e7518;position:relative;overflow:hidden}
+    .hero:after{content:"♡";position:absolute;right:22px;bottom:5px;color:#fff;font-size:75px;text-shadow:0 3px 18px #6d354e66}
+    .card{background:#ffffffd9;border:1px solid #fff;border-radius:24px;padding:24px;margin-top:18px;box-shadow:0 12px 34px #9d5b7110;backdrop-filter:blur(8px)}
+    .step{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#ffe4ed;color:var(--deep);font-weight:700;margin-right:9px}
+    h2{font-size:25px;margin:0 0 6px}.hint{font-size:13px;color:var(--muted);margin:0 0 18px}
+    .options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .option{border:1.5px solid var(--line);background:#fff;border-radius:18px;padding:0;overflow:hidden;text-align:left;color:inherit;cursor:pointer;transition:.2s;position:relative}
+    .option:hover{transform:translateY(-2px);box-shadow:0 8px 20px #b94e7518}.option.selected{border-color:var(--pink);box-shadow:0 0 0 3px #f9dce6;background:#fff9fb}
+    .option img{width:100%;height:118px;object-fit:cover;display:block;background:#f8e8ed}.option .meta{padding:11px 12px 13px}.option strong{display:block;font-size:15px}.option small{color:var(--muted);font-size:12px}
+    .check{position:absolute;top:9px;right:9px;background:#fff;border-radius:50%;width:25px;height:25px;display:grid;place-items:center;color:var(--deep);font-weight:700;box-shadow:0 2px 8px #0002;opacity:0}.selected .check{opacity:1}
+    .restaurants{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.restaurant{padding:15px;border:1.5px solid var(--line);background:#fff;border-radius:15px;text-align:left;font:600 15px "DM Sans";color:var(--ink);cursor:pointer}.restaurant.selected{border-color:var(--pink);background:#fff1f5;box-shadow:0 0 0 3px #f9dce6}
+    .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-size:13px;font-weight:700;color:#795968}input,textarea{font:inherit;color:var(--ink);border:1px solid var(--line);background:#fff;border-radius:13px;padding:13px;outline:none;width:100%}input:focus,textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px #f9dce6}textarea{resize:vertical;min-height:84px}
+    .summary{background:#fff5f8;border:1px dashed #eab4c6;border-radius:17px;padding:16px;line-height:1.8;font-size:14px}.summary b{color:var(--deep)}
+    .submit{border:0;border-radius:999px;background:linear-gradient(100deg,#e88eaa,#c96d8d);color:#fff;font:700 16px "DM Sans";padding:16px 24px;width:100%;margin-top:16px;cursor:pointer;box-shadow:0 9px 20px #c96d8d3b}.submit:disabled{opacity:.65;cursor:wait}
+    .fine{font-size:11px;color:var(--muted);text-align:center;margin:12px 0 0}.notice{display:none;margin-top:14px;padding:14px;border-radius:14px;background:#f1fff6;color:#286341;font-size:14px}.notice.error{background:#fff0f0;color:#9b3333}
+    footer{text-align:center;color:#ad8997;font-size:12px;padding:24px 0}
+    @media(max-width:520px){.card{padding:19px}.option img{height:105px}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.hero{height:150px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">a little plan for us</div>
+    <h1>Let's plan our date ♡</h1>
+    <p>Em chọn nhé, còn lại để anh lo. 💗</p>
+  </header>
+  <div class="hero" role="img" aria-label="A romantic couple date"></div>
+
+  <section class="card">
+    <h2><span class="step">1</span>Em muốn làm gì trước khi ăn?</h2>
+    <p class="hint">Chọn một hoạt động mà em thích nhất nhé ♡</p>
+    <div class="options" id="activities">
+      <button class="option" data-value="Mini Golf" type="button"><span class="check">✓</span><img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=700&q=80" alt="Mini golf"><span class="meta"><strong>⛳ Mini Golf</strong><small>Let's play together!</small></span></button>
+      <button class="option" data-value="Arkády" type="button"><span class="check">✓</span><img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=700&q=80" alt="Arcade"><span class="meta"><strong>🕹️ Arkády</strong><small>Let's have some fun!</small></span></button>
+      <button class="option" data-value="Cinema" type="button"><span class="check">✓</span><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=700&q=80" alt="Cinema" onerror="this.src='https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=700&q=80'"><span class="meta"><strong>🎬 Cinema</strong><small>Movie date!</small></span></button>
+      <button class="option" data-value="Sunset" type="button"><span class="check">✓</span><img src="https://images.unsplash.com/photo-1472120435266-53107fd0c44a?auto=format&fit=crop&w=700&q=80" alt="Sunset"><span class="meta"><strong>🌅 Ngắm hoàng hôn</strong><small>A little golden hour</small></span></button>
+      <button class="option" data-value="Shopping together" type="button"><span class="check">✓</span><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80" alt="Shopping" onerror="this.src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80'"><span class="meta"><strong>🛍️ Shopping date</strong><small>Đi shopping cùng nhau</small></span></button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">2</span>Em muốn đi ăn ở đâu?</h2>
+    <p class="hint">Chọn nhà hàng cho buổi tối của chúng mình ♡</p>
+    <div class="restaurants" id="restaurants">
+      <button class="restaurant" type="button" data-value="Matzip">🍜 Matzip</button>
+      <button class="restaurant" type="button" data-value="Numaru">🥢 Numaru</button>
+      <button class="restaurant" type="button" data-value="Gangnam">🍲 Gangnam</button>
+      <button class="restaurant" type="button" data-value="Dokao">🍽️ Dokao</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">3</span>When shall we go?</h2>
+    <p class="hint">Chọn ngày và giờ mà em muốn nhé.</p>
+    <div class="fields">
+      <div class="field"><label for="date">Ngày đi date</label><input id="date" type="date" required></div>
+      <div class="field"><label for="time">Giờ bắt đầu</label><input id="time" type="time" required></div>
+      <div class="field full"><label for="note">Một lời nhắn cho anh (không bắt buộc)</label><textarea id="note" placeholder="Ví dụ: Em muốn đi xem phim lúc 7 giờ..."></textarea></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">4</span>Our little plan ♡</h2>
+    <p class="hint">Kiểm tra lựa chọn của em trước khi gửi nhé.</p>
+    <div class="summary" id="summary">Hoạt động: <b>Chưa chọn</b><br>Ăn tối: <b>Chưa chọn</b><br>Ngày: <b>Chưa chọn</b><br>Giờ: <b>Chưa chọn</b></div>
+    <button class="submit" id="submit">Confirm our date 💌</button>
+    <p class="fine">Your choice will be sent to anh's email. Made with love ♡</p>
+    <div class="notice" id="notice" role="status"></div>
+  </section>
+  <footer>just you, me & a little date ♡</footer>
+</div>
+
+<script>
+  // Dán URL Web App Google Apps Script (kết thúc bằng /exec) vào đây.
+  const APPS_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+  let selectedActivity = "";
+  let selectedRestaurant = "";
+  const $ = id => document.getElementById(id);
+  const activityButtons = [...document.querySelectorAll("#activities .option")];
+  const restaurantButtons = [...document.querySelectorAll("#restaurants .restaurant")];
+
+  function selectOne(buttons, value, setter) {
+    buttons.forEach(b => b.classList.toggle("selected", b.dataset.value === value));
+    setter(value);
+    updateSummary();
+  }
+  activityButtons.forEach(b => b.addEventListener("click", () => selectOne(activityButtons, b.dataset.value, v => selectedActivity = v)));
+  restaurantButtons.forEach(b => b.addEventListener("click", () => selectOne(restaurantButtons, b.dataset.value, v => selectedRestaurant = v)));
+  ["date","time","note"].forEach(id => $(id).addEventListener("input", updateSummary));
+
+  function updateSummary() {
+    const date = $("date").value ? new Date($("date").value + "T12:00:00").toLocaleDateString("vi-VN") : "Chưa chọn";
+    const time = $("time").value || "Chưa chọn";
+    $("summary").innerHTML = `Hoạt động: <b>${escapeHtml(selectedActivity || "Chưa chọn")}</b><br>Ăn tối: <b>${escapeHtml(selectedRestaurant || "Chưa chọn")}</b><br>Ngày: <b>${date}</b><br>Giờ: <b>${time}</b>`;
+  }
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+  $("submit").addEventListener("click", async () => {
+    const notice = $("notice");
+    notice.className = "notice"; notice.style.display = "none";
+    if (!selectedActivity || !selectedRestaurant || !$("date").value || !$("time").value) {
+      notice.textContent = "Em chọn hoạt động, nhà hàng, ngày và giờ trước nhé ♡";
+      notice.classList.add("error"); notice.style.display = "block"; return;
+    }
+    if (APPS_SCRIPT_URL.includes("PASTE_YOUR")) {
+      notice.textContent = "Website chưa được kết nối email. Anh cần dán URL Google Apps Script vào file index.html trước khi đăng tải.";
+      notice.classList.add("error"); notice.style.display = "block"; return;
+    }
+    const payload = {
+      activity: selectedActivity,
+      restaurant: selectedRestaurant,
+      date: $("date").value,
+      time: $("time").value,
+      note: $("note").value.trim(),
+      submittedAt: new Date().toISOString()
+    };
+    const btn = $("submit"); btn.disabled = true; btn.textContent = "Sending our date... ♡";
+    try {
+      // Apps Script accepts text/plain; no-cors avoids browser preflight.
+      await fetch(APPS_SCRIPT_URL, {method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(payload)});
+      notice.textContent = "Đã gửi lựa chọn của em rồi! Anh sẽ nhận được email nhé. Hẹn gặp em trong buổi date ♡";
+      notice.style.display = "block";
+      btn.textContent = "Date request sent 💗";
+    } catch (err) {
+      notice.textContent = "Chưa gửi được rồi. Em thử lại nhé, hoặc báo anh kiểm tra kết nối email.";
+      notice.classList.add("error"); notice.style.display = "block";
+      btn.disabled = false; btn.textContent = "Try again 💌";
+    }
+  });
+  updateSummary();
+</script>
+</body>
+</html>
